@@ -10,6 +10,17 @@
 
     <!-- Title  -->
     <title>adaToko</title>
+	<?php
+                // Create connection
+                $conn = mysqli_connect("localhost","root","","adatoko");
+				$query1 = "select k_lat from toko where id = '2'";
+				$query2 = "select k_long from toko where id = '2'";
+                $lat1 = mysqli_query($conn,$query1);
+				$long2 = mysqli_query($conn,$query2);
+                if (! $lat1){
+                   throw new My_Db_Exception('Database error: ' . mysql_error());
+                }
+    ?>
 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -152,19 +163,28 @@
                     </div>
 					<div class="row">
                     <div class="col-12 ">
+					
 										<h3>My Google Maps Demo</h3>
 											<!--The div element for the map -->
 											<div id="map"></div>
+											
 											<script>
 										// Initialize and add the map
-										function initMap() {
-										  // The location of Uluru
-										  var uluru = {lat: -6.965323, lng: 107.586554};
-										  // The map, centered at Uluru
-										  var map = new google.maps.Map(
-											  document.getElementById('map'), {zoom: 15, center: uluru});
-										  // The marker, positioned at Uluru
-										  var marker = new google.maps.Marker({position: uluru, map: map});
+										function initialize() {
+										  var propertiPeta = {
+											center:new google.maps.LatLng(<?php $lat1?>,<?php $long2 ?>),
+											zoom:9,
+											mapTypeId:google.maps.MapTypeId.ROADMAP
+										  };
+										  
+										  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+										  
+										  // membuat Marker
+										  var marker=new google.maps.Marker({
+											  position: new google.maps.LatLng(<?php $lat1?>,<?php $long2 ?>),
+											  map: peta
+										  });
+										  google.maps.event.addDomListener(window, 'load', initialize);
 										}
 											</script>
 											<!--Load the API from the specified URL
@@ -175,7 +195,7 @@
 											<script async defer
 											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWLli-DWH3HjXuTd4xm_CGqMwqVTmzEn4&callback=initMap">
 											</script>
-										</div>
+						</div>
 					</div>
 				</div>
             </div>
