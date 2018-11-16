@@ -1,6 +1,44 @@
 <!DOCTYPE php>
 <php lang="en">
+<?php
+								if(isset($_POST['first_name'])){
+									echo "<script type='text/javascript'>alert(' Berhasil!')</script>";
+										
+									$first_name  = $_POST['first_name'];
+									$last_name = $_POST['last_name'];
+									$company = $_POST['Company'];
+									$email = $_POST['email'];
+									$country = $_POST['country'];
+									$address = $_POST['address'];
+									$kota = $_POST['Town'];
+									$kodePos = $_POST['zipCode'];
+									$noTelfon = $_POST['phone_number'];
+									$komentar = $_POST['comment'];
+									$conn=new mysqli("localhost","root","","adatoko");
+									
 
+
+									$sql = "INSERT INTO `transaksicheckout`(`firstName`, `lastName`, `companyName`, `email`, `negara`, `address`, `kota`, `kodePos`, `noTelepon`, `komentar`) VALUES ('".$first_name."','".$last_name."','".$company."','".$email."','".$country."','".$address."','".$kota."','".$kodePos."','".$noTelfon."','".$komentar."')";
+									if(mysqli_query($conn,$sql)){
+										echo "<script type='text/javascript'>alert('Checkout berhasil!')</script>";
+									}
+									 
+								
+                           
+								}
+									/*
+									ini_set( 'display_errors', 1 );   
+									error_reporting( E_ALL );    
+									$from = "adrianzbrr1@gmail.com";    
+									$to = 'irfanteuing96@gmail.com';    
+									$subject = "Checking PHP mail";    
+									$message = "PHP mail berjalan dengan baik";   
+									$headers = "From:" . $from;    
+									mail($to,$subject,$message, $headers);    
+									echo "Pesan email sudah terkirim.";
+									*/
+								
+								?>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -105,22 +143,22 @@
                                 <h2>Checkout</h2>
                             </div>
 
-                            <form action="#" method="post">
+                            <form action='checkout.php' method="POST">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <input type="text" class="form-control" id="first_name" value="" placeholder="First Name" required>
+                                        <input type="text" class="form-control" name="first_name" value="" placeholder="First Name" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <input type="text" class="form-control" id="last_name" value="" placeholder="Last Name" required>
+                                        <input type="text" class="form-control" name="last_name" value="" placeholder="Last Name" required>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="text" class="form-control" id="company" placeholder="Company Name" value="">
+                                        <input type="text" class="form-control" name="Company" placeholder="Company Name" value="">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="email" class="form-control" id="email" placeholder="Email" value="">
+                                        <input type="email" class="form-control" name='email' placeholder="Email" value="">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <select class="w-100" id="country">
+                                        <select class="w-100" name="country">
                                         <option value="usa">United States</option>
                                         <option value="uk">United Kingdom</option>
                                         <option value="ger">Germany</option>
@@ -132,19 +170,19 @@
                                     </select>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="text" class="form-control mb-3" id="street_address" placeholder="Address" value="">
+                                        <input type="text" class="form-control mb-3" name="address" placeholder="address" value="">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <input type="text" class="form-control" id="city" placeholder="Town" value="">
+                                        <input type="text" class="form-control" name="Town" placeholder="Town" value="">
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" value="">
+                                        <input type="text" class="form-control" name="zipCode" placeholder="Zip Code" value="">
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <input type="number" class="form-control" id="phone_number" min="0" placeholder="Phone No" value="">
+                                        <input type="number" class="form-control" name="phone_number" min="0" placeholder="Phone No" value="">
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <textarea name="comment" class="form-control w-100" id="comment" cols="30" rows="10" placeholder="Leave a comment about your order"></textarea>
+                                        <textarea name="comment" class="form-control w-100" name="comment" cols="30" rows="10" placeholder="Leave a comment about your order"></textarea>
                                     </div>
 
                                     <div class="col-12">
@@ -158,6 +196,7 @@
                                         </div>
                                     </div>
                                 </div>
+								<input type="submit" value='Checkout'>
                             </form>
                         </div>
                     </div>
@@ -184,7 +223,9 @@
                             </div>
 
                             <div class="cart-btn mt-100">
-                                <a href="#" class="btn amado-btn w-100">Checkout</a>
+								
+								
+                                
                             </div>
                         </div>
                     </div>
@@ -192,7 +233,7 @@
             </div>
         </div>
     </div>
-    <!-- ##### Main Content Wrapper End ##### -->
+    <!-- #####<a href="#" class="btn amado-btn w-100">Checkout</a> Main Content Wrapper End ##### -->
 
     <!-- ##### Newsletter Area Start ##### -->
     <section class="newsletter-area section-padding-100-0">
