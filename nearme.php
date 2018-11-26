@@ -114,25 +114,23 @@
 											<!--The div element for the map -->
                       <div id="googleMap" style="width:1000px;height:800px;"></div>
   											<!--The div element for the map -->
-                        <script>
-                        function myMap() {
-                        var mapProp= {
-                            center:new google.maps.LatLng(-6.875018, 107.606674),
-                            zoom:5,
-                        };
-                        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-                        }
-						var marker1 = new google.maps.Marker({
-						  position: {lat:-6.875054, lng: 107.607037},
-						  map: map,
-						  title: 'Toko Bangunan'
-						});
-						var marker2 = new google.maps.Marker({
-						  position: {lat:-6.875623, lng: 107.606435},
-						  map: map,
-						  title: 'Toko '
-						})
-                        </script>
+                          <script> 
+// Initialize and add the map 
+function myMap() { 
+  // The location of Uluru 
+  var uluru = {lat: -6.8753933, lng: 107.6045577}; 
+  var uluru1 = {lat: -6.875609, lng: 107.606274}; 
+  var uluru2 = {lat: -6.874443, lng: 107.606917}; 
+  // The map, centered at Uluru 
+  var map = new google.maps.Map( 
+      document.getElementById('googleMap'), {zoom: 20, center: uluru}); 
+  // The marker, positioned at Uluru 
+  var marker = new google.maps.Marker({position: uluru, map: map}); 
+  var marker = new google.maps.Marker({position: uluru1, map: map}); 
+  var marker = new google.maps.Marker({position: uluru2, map: map}); 
+ 
+} 
+    </script>
 
                         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAMk90JQbi7iimDTcrX2WOG20ue8MosLc&callback=myMap"></script>
 
