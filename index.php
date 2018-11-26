@@ -49,7 +49,21 @@
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
                 <a href="index.php"><img src="img/core-img/logo.png" alt=""></a>
+                <?php
+                    // Create connection
+                    $conn = mysqli_connect("localhost","root","","adatoko");
+                    $query = "select namaToko from toko where email = '".$_SESSION['uname']."'";
+                    $result = mysqli_query($conn,$query);
+                    if (! $result){
+                       throw new My_Db_Exception('Database error: ' . mysql_error());
+                    }
+
+                    while($row = $result->fetch_assoc()){
+                      echo "<span  class='semi-bold'>Hai " . $row['namaToko'] . "</span>";
+                    }
+                ?>
             </div>
+
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
                 <span></span><span></span><span></span>
@@ -70,14 +84,14 @@
             <nav class="amado-nav">
                 <ul>
                     <li class="active"><a href="index.php">Home</a></li>
-                    <li><a href="shop.php">Near Me</a></li>
+                    <li><a href="nearme.php">Near Me</a></li>
                     <li><a href="cart.php">Cart</a></li>
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
                 <a href="#" class="btn amado-btn mb-15">Discount</a>
-                <a href="#" class="btn amado-btn active">Register Your Own Business</a>
+                <a href="signup.php" class="btn amado-btn active">Register Your Own Business</a>
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
@@ -244,7 +258,7 @@
             </div>
         </div>
     </section>
-	
+
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->

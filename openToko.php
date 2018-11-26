@@ -157,44 +157,19 @@
                             <div class="short_overview my-5">
                                 <p>Toko ini menjual berbagai macam barang - barang rumah tangga</p>
                             </div>
-								
+
 
                         </div>
                     </div>
 					<div class="row">
                     <div class="col-12 ">
-					
-										<h3>My Google Maps Demo</h3>
-											<!--The div element for the map -->
-											<div id="map"></div>
-											
-											<script>
-										// Initialize and add the map
-										function initialize() {
-										  var propertiPeta = {
-											center:new google.maps.LatLng(<?php $lat1?>,<?php $long2 ?>),
-											zoom:9,
-											mapTypeId:google.maps.MapTypeId.ROADMAP
-										  };
-										  
-										  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
-										  
-										  // membuat Marker
-										  var marker=new google.maps.Marker({
-											  position: new google.maps.LatLng(<?php $lat1?>,<?php $long2 ?>),
-											  map: peta
-										  });
-										  google.maps.event.addDomListener(window, 'load', initialize);
-										}
-											</script>
-											<!--Load the API from the specified URL
-											* The async attribute allows the browser to render the page while the API loads
-											* The key parameter will contain your own API key (which is not needed for this tutorial)
-											* The callback parameter executes the initMap() function
-											-->
-											<script async defer
-											src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWLli-DWH3HjXuTd4xm_CGqMwqVTmzEn4&callback=initMap">
-											</script>
+
+										<h3></h3>
+                    <a href="https://www.google.com/maps/dir/Unpar+Gedung+9,+Jalan+Bukit+Jarian,
+                    +Hegarmanah,+Kota+Bandung,+Jawa+Barat/-6.8816307,107.6041183/@-6.878604,107.6036493,
+                    16.54z/data=!4m9!4m8!1m5!1m1!1s0x2e68e6efcb85b29f:
+                    0xdce714e25cb4790a!2m2!1d107.6069554!2d-6.8758577!1m0!3e2"> <img src="img/map.png"></a>
+
 						</div>
 					</div>
 				</div>
@@ -227,7 +202,7 @@
             </div>
         </div>
     </section>
-	
+
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
